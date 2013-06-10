@@ -138,8 +138,11 @@ public class Fragment_Send extends Fragment implements OnClickListener, AdapterV
 		String destinationAddress = editDestinationAddress.getText().toString();
 		
 		try {
-            //rippleBank.signTransaction(fromAccountAddress, accountSecret, amount, destinationAddress);
-            rippleBank.signTransaction(fromAccountAddress, accountSecret, amount, currency, fromAccountAddress, destinationAddress);
+            if (currency == RippleBank.CURRENCY_XRP) {
+                rippleBank.signTransaction(fromAccountAddress, accountSecret, amount, destinationAddress);
+            } else {
+                rippleBank.signTransaction(fromAccountAddress, accountSecret, amount, currency, fromAccountAddress, destinationAddress);
+            }
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

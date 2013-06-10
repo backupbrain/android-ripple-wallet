@@ -12,7 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdf0cef-8234-449a-b2e1-251b83bc3b2d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/phonebank/ripplewallet/RippleWalletActivity.java" afterPath="$PROJECT_DIR$/src/com/phonebank/ripplewallet/RippleWalletActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/phonebank/ripplewallet/fragments/Fragment_Send.java" afterPath="$PROJECT_DIR$/src/com/phonebank/ripplewallet/fragments/Fragment_Send.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="android-ripple-wallet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RippleWalletActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RippleWalletActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/RippleWalletActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="39" selection-start="2922" selection-end="2922" vertical-scroll-proportion="-4.1860466" vertical-offset="3045" max-vertical-offset="5745">
+            <state line="146" column="42" selection-start="4298" selection-end="4298" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="5745">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3496#3533#0" expanded="true" />
@@ -106,24 +107,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="23" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TabListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/TabListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="16" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RippleAccount.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripple/RippleAccount.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -136,19 +119,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Transaction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripple/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="780">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Fragment_Send.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Fragment_Send.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/fragments/Fragment_Send.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="35" selection-start="3108" selection-end="3108" vertical-scroll-proportion="-30.576923" vertical-offset="0" max-vertical-offset="3360">
+            <state line="144" column="13" selection-start="5249" selection-end="5249" vertical-scroll-proportion="0.8725762" vertical-offset="1455" max-vertical-offset="3405">
               <folding>
                 <element signature="e#3235#3243#0" expanded="true" />
               </folding>
@@ -219,8 +193,8 @@
         <option value="$PROJECT_DIR$/README.txt" />
         <option value="$PROJECT_DIR$/src/com/phonebank/ripple/RippleBank.java" />
         <option value="$PROJECT_DIR$/res/layout/fragment_send.xml" />
-        <option value="$PROJECT_DIR$/src/com/phonebank/ripplewallet/fragments/Fragment_Send.java" />
         <option value="$PROJECT_DIR$/src/com/phonebank/ripplewallet/RippleWalletActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/phonebank/ripplewallet/fragments/Fragment_Send.java" />
       </list>
     </option>
   </component>
@@ -708,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="40" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/View_CameraPreview.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="12" selection-start="1423" selection-end="1423" vertical-scroll-proportion="0.29166666" vertical-offset="300" max-vertical-offset="3615">
@@ -786,15 +753,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/fragments/Fragment_Send.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="35" selection-start="3108" selection-end="3108" vertical-scroll-proportion="-30.576923" vertical-offset="0" max-vertical-offset="3360">
-          <folding>
-            <element signature="e#3235#3243#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripple/RippleWallet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="-1.205" vertical-offset="617" max-vertical-offset="1230">
@@ -802,19 +760,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/RippleWalletActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="146" column="42" selection-start="4298" selection-end="4298" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="5745">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3496#3533#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="23" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+        <state line="19" column="23" selection-start="957" selection-end="957" vertical-scroll-proportion="0.7125" vertical-offset="0" max-vertical-offset="420">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/RippleWalletActivity.java">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="39" selection-start="2922" selection-end="2922" vertical-scroll-proportion="-4.1860466" vertical-offset="3045" max-vertical-offset="5745">
+        <state line="19" column="40" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phonebank/ripplewallet/fragments/Fragment_Send.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="13" selection-start="5249" selection-end="5249" vertical-scroll-proportion="0.8725762" vertical-offset="1455" max-vertical-offset="3405">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3496#3533#0" expanded="true" />
+            <element signature="e#3235#3243#0" expanded="true" />
           </folding>
         </state>
       </provider>
