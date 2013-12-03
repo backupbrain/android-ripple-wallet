@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />
-    
+
     <TextView
         android:id="@+id/label_login"
         android:layout_width="wrap_content"
@@ -20,8 +20,8 @@
         android:id="@+id/edit_accountAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/login_edit_account_address"
-        android:ems="10" >
+        android:ems="10"
+        android:hint="@string/login_edit_account_address" >
 
         <requestFocus />
     </EditText>
@@ -31,19 +31,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button_qr_reader" />
+    <!--
+	Edit the input type to be password
+	Editor: Shiyao Qi
+	Email: qishiyao2008@126.com
+	Date: 2013.12.03
+    -->
 
     <EditText
         android:id="@+id/edit_accountSecret"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
         android:hint="@string/login_edit_account_secret"
-        android:ems="10" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button_login" />
-
 
 </LinearLayout>
