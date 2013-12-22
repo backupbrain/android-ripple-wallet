@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * 
+ * Self-defined Notifier.
  * @author Tony Gaitatzis
  *
  */

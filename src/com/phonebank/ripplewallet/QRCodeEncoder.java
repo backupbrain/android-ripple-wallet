@@ -34,7 +34,9 @@ import com.google.zxing.common.BitMatrix;
 /**
  * Encode QR codes
  * @author Tony Gaitatzis
- *
+ * @editor Shiyao Qi
+ * @date 2013.12.22
+ * @email qishiyao2008@126.com
  */
 public final class QRCodeEncoder {
     private static final int WHITE = 0xFFFFFFFF;
