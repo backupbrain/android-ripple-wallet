@@ -35,7 +35,12 @@ import android.util.Log;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Implement of WebSocket.
+ * @editor Shiyao Qi
+ * @date 2013.12.31
+ * @email qishiyao2008@126.com
+ */
 public class HybiParser {
     private static final String TAG = "HybiParser";
 
@@ -78,6 +83,7 @@ public class HybiParser {
     private static final int OP_PING         =  9;
     private static final int OP_PONG         = 10;
 
+    // A list of operation codes.
     private static final List<Integer> OPCODES = Arrays.asList(
         OP_CONTINUATION,
         OP_TEXT,
@@ -87,6 +93,7 @@ public class HybiParser {
         OP_PONG
     );
 
+    
     private static final List<Integer> FRAGMENTED_OPCODES = Arrays.asList(
         OP_CONTINUATION, OP_TEXT, OP_BINARY
     );
@@ -106,7 +113,7 @@ public class HybiParser {
 
     public void start(HappyDataInputStream stream) throws IOException {
         while (true) {
-            if (stream.available() == -1) break;
+            if (stream.available() == -1) break; // The InputStream can't be read.
             Log.v(TAG,"stream: "+stream.toString());
             switch (mStage) {
                 case 0:
@@ -390,6 +397,9 @@ public class HybiParser {
         return value;
     }
 
+    /**
+     * Read data into buffer.
+     */
     public static class HappyDataInputStream extends DataInputStream {
         public HappyDataInputStream(InputStream in) {
             super(in);
@@ -400,15 +410,15 @@ public class HybiParser {
 
             int total = 0;
 
-            while (total < length) {
+            while (total < length) { // Read all data to the buffer.
                 int count = read(buffer, total, length - total);
                 if (count == -1) {
                     break;
                 }
-                total += count;
+                total += count; // Update the bytes being read.
             }
 
-            if (total != length) {
+            if (total != length) { // Read error.
                 throw new IOException(String.format("Read wrong number of bytes. Got: %s, Expected: %s.", total, length));
             }
 

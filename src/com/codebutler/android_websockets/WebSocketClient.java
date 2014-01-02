@@ -31,12 +31,17 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
+/**
+ * @editor Shiyao Qi
+ * @date 2013.12.31
+ * @email qishiyao2008@126.com
+ */
 public class WebSocketClient {
     private static final String TAG = "WebSocketClient";
 
     private URI                      mURI;
-    private Listener                 mListener;
-    private Socket                   mSocket;
+    private Listener                 mListener; // WebSocket listener.
+    private Socket                   mSocket; 
     private Thread                   mThread;
     private HandlerThread            mHandlerThread;
     private Handler                  mHandler;
@@ -60,7 +65,7 @@ public class WebSocketClient {
         mParser       = new HybiParser(this);
 
         mHandlerThread = new HandlerThread("websocket-thread");
-        mHandlerThread.start();
+        mHandlerThread.start(); // Start a new thread.
         mHandler = new Handler(mHandlerThread.getLooper());
     }
 
@@ -68,8 +73,11 @@ public class WebSocketClient {
         return mListener;
     }
 
+    /**
+     * Create an instance of Thread an run it.
+     */
     public void connect() {
-        if (mThread != null && mThread.isAlive()) {
+        if (mThread != null && mThread.isAlive()) { // The thread is running.
             return;
         }
 
@@ -77,18 +85,26 @@ public class WebSocketClient {
             @Override
             public void run() {
                 try {
+                	// Get the port of the uri.
                     int port = (mURI.getPort() != -1) ? mURI.getPort() : ((mURI.getScheme().equals("wss") || mURI.getScheme().equals("https")) ? 443 : 80);
 
+                    // Get the path of the uri.
                     String path = TextUtils.isEmpty(mURI.getPath()) ? "/" : mURI.getPath();
+                    
+                    // Update the path if the query of the uri is not null.
                     if (!TextUtils.isEmpty(mURI.getQuery())) {
-                        path += "?" + mURI.getQuery();
+                        path += "?" + mURI.getQuery(); // Use the query to construct the path.
                     }
 
+                    // Get the scheme of the uri.
                     String originScheme = mURI.getScheme().equals("wss") ? "https" : "http";
+                    
+                    // Create a new uri instance according to the scheme and host.
                     URI origin = new URI(originScheme, "//" + mURI.getHost(), null);
 
+                    // Get the socket factory.
                     SocketFactory factory = (mURI.getScheme().equals("wss") || mURI.getScheme().equals("https")) ? getSSLSocketFactory() : SocketFactory.getDefault();
-                    mSocket = factory.createSocket(mURI.getHost(), port);
+                    mSocket = factory.createSocket(mURI.getHost(), port); // Create a new socket connected to the host and port.
 
                     PrintWriter out = new PrintWriter(mSocket.getOutputStream());
                     out.print("GET " + path + " HTTP/1.1\r\n");
@@ -98,14 +114,15 @@ public class WebSocketClient {
                     out.print("Origin: " + origin.toString() + "\r\n");
                     out.print("Sec-WebSocket-Key: " + createSecret() + "\r\n");
                     out.print("Sec-WebSocket-Version: 13\r\n");
-                    if (mExtraHeaders != null) {
+                    if (mExtraHeaders != null) { // Add the name-value pair.
                         for (NameValuePair pair : mExtraHeaders) {
                             out.print(String.format("%s: %s\r\n", pair.getName(), pair.getValue()));
                         }
                     }
                     out.print("\r\n");
-                    out.flush();
+                    out.flush(); // Flush the data to the target.
 
+                    // Get the data of the InputStream.
                     HybiParser.HappyDataInputStream stream = new HybiParser.HappyDataInputStream(mSocket.getInputStream());
 
                     // Read HTTP response status line.
@@ -127,7 +144,7 @@ public class WebSocketClient {
 
                     mListener.onConnect();
 
-                    mConnected = true;
+                    mConnected = true; // Update the connect status.
 
                     // Now decode websocket frames.
                     mParser.start(stream);
@@ -147,22 +164,23 @@ public class WebSocketClient {
                 } catch (Exception ex) {
                     mListener.onError(ex);
                 }
-                
-               
             }
         });
         mThread.start();
     }
 
+    /**
+     * Disconnect the socket.
+     */
     public void disconnect() {
         if (mSocket != null) {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        mSocket.close();
+                        mSocket.close(); // Close the socket.
                         mSocket = null;
-                        mConnected = false;
+                        mConnected = false; // Set the connected status to false.
                     } catch (IOException ex) {
                         Log.d(TAG, "Error while disconnecting", ex);
                         mListener.onError(ex);
@@ -184,6 +202,11 @@ public class WebSocketClient {
         return mConnected;
     }
 
+    /**
+     * Get the StatusLine of an HTTP response.
+     * @param line The HTTP response.
+     * @return The StatusLine.
+     */
     private StatusLine parseStatusLine(String line) {
         if (TextUtils.isEmpty(line)) {
             return null;
@@ -197,24 +220,28 @@ public class WebSocketClient {
 
     // Can't use BufferedReader because it buffers past the HTTP data.
     private String readLine(HybiParser.HappyDataInputStream reader) throws IOException {
-        int readChar = reader.read();
+        int readChar = reader.read(); // Read a byte.
         if (readChar == -1) {
             return null;
         }
         StringBuilder string = new StringBuilder("");
-        while (readChar != '\n') {
+        while (readChar != '\n') { // Read all the data to a StringBuilder.
             if (readChar != '\r') {
                 string.append((char) readChar);
             }
 
-            readChar = reader.read();
+            readChar = reader.read(); // Read another byte.
             if (readChar == -1) {
                 return null;
             }
         }
-        return string.toString();
+        return string.toString(); // Return the content.
     }
 
+    /**
+     * Create random bytes and encoded by Base64.
+     * @return Random bytes encoded by Base64.
+     */
     private String createSecret() {
         byte[] nonce = new byte[16];
         for (int i = 0; i < 16; i++) {
@@ -248,9 +275,15 @@ public class WebSocketClient {
         public void onError(Exception error);
     }
 
+    /**
+     * Get an SSLSocketFactory instance.
+     * @return An SSLSocketFactory instance.
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     private SSLSocketFactory getSSLSocketFactory() throws NoSuchAlgorithmException, KeyManagementException {
-        SSLContext context = SSLContext.getInstance("TLS");
-        context.init(null, sTrustManagers, null);
-        return context.getSocketFactory();
+        SSLContext context = SSLContext.getInstance("TLS"); // Create a new SSLContext instance according to the protocol TLS.
+        context.init(null, sTrustManagers, null); // Initialize the SSLContext instance.
+        return context.getSocketFactory(); // Get a SocketFactory of the instance.
     }
 }
