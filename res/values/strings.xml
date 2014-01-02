@@ -3,33 +3,24 @@
 
     <string name="app_name">RippleWallet</string>
     <string name="action_settings">Settings</string>
-    
     <string name="currency_format">###,###,###,###.###</string>
-    
     <string name="tab_wallet">Wallet</string>
     <string name="tab_send">Send</string>
     <string name="tab_receive">Receive</string>
-
-   
     <string name="receive_text_scan">Have this QR-code scanned by the sender</string>
-    
     <string name="send_hint_ripple_address">Ripple Address</string>
     <string name="send_hint_pay_amount">0.0</string>
     <string name="send_label_pay_to">Pay to Ripple Address</string>
     <string name="send_label_balance_available">Available for spending</string>
     <string name="send_label_amount_to_pay">Amount to pay</string>
-    
     <string name="send_button_qr_reader">QR</string>
     <string name="send_button_confirm">Send Money</string>
     <string name="send_button_cancel">Cancel</string>
-    
-    
     <string name="error_no_internet">No internet connection</string>
-    
     <string name="login_text_instruction">Log into your Ripple Wallet</string>
     <string name="login_edit_account_address">Account Address</string>
     <string name="login_button_qr_reader">QR</string>
     <string name="login_edit_account_secret">Account Secret</string>
     <string name="login_button_login">Login</string>
-    
+
 </resources>

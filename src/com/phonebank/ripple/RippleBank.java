@@ -19,11 +19,14 @@ import com.codebutler.android_websockets.WebSocketClient;
 /**
  * This is our ripple bank - it communicates with the Ripple network
  * @author Tony Gaitatzis
+ * @editor Shiyao Qi
+ * @date 2013.12.22
+ * @email qishiyao2008@126.com
  *
  */
 public class RippleBank implements WebSocketClient.Listener {
-	private String address;
-	private String ripple_server_uri = "wss://s1.ripple.com:51233";
+	private String address; // Account address.
+	private String ripple_server_uri = "wss://s1.ripple.com:51233"; // Ripple server uri.
 	private WebSocketClient websocket;
 	private RippleBank.Listener bankListener;
 	
@@ -40,23 +43,24 @@ public class RippleBank implements WebSocketClient.Listener {
 	private static final int ID_SIGN = 300; 
 	private static final int ID_SUBMIT = 301;
 
-	public static final String CURRENCY_BTC = "BTC";
-	public static final String CURRENCY_XRP = "XRP";
-	public static final String CURRENCY_EUR = "EUR";
-    public static final String CURRENCY_USD;
+	public static final String CURRENCY_BTC = "BTC"; // Currency BTC.
+	public static final String CURRENCY_XRP = "XRP"; // Currency XRP.
+	public static final String CURRENCY_EUR = "EUR"; // Currency EUR.
+	public static final String CURRENCY_CNY = "CNY"; //	Currency CNY.
+    public static final String CURRENCY_USD; // Currency USD.
 
     static {
         CURRENCY_USD = "USD";
     }
 
-    public static final String CURRENCY_CAD = "CAD";
-	public static final String CURRENCY_DEFAULT = CURRENCY_XRP;
+    public static final String CURRENCY_CAD = "CAD"; // Currency CAD.
+	public static final String CURRENCY_DEFAULT = CURRENCY_XRP; // Default currency XRP.
 	
 	private static final String ID_LINES = "lines";
 	
-	public final static String ADDRESS_ONE = "rrrrrrrrrrrrrrrrrrrrBZbvji";
+	public final static String ADDRESS_ONE = "rrrrrrrrrrrrrrrrrrrrBZbvji"; // The ripple address one.
 	
-	private RippleAccount account;
+	private RippleAccount account; // Ripple account. 
 
 	public interface Listener {
 		public void onConnect();
@@ -76,6 +80,11 @@ public class RippleBank implements WebSocketClient.Listener {
 		this.bankListener = listener;
 	}
 	
+	/**
+	 * Get the account from JSON.
+	 * @param accountJSON JSONObject.
+	 * @throws JSONException
+	 */
 	public void loadAccountFromJSON(JSONObject accountJSON) throws JSONException {
 		RippleAccount account = RippleAccount.fromJSON(accountJSON);
 		setAccount(account);
@@ -101,15 +110,18 @@ public class RippleBank implements WebSocketClient.Listener {
 		return address;
 	}
 
+	/**
+	 * Connect to the Ripple server uri.
+	 */
 	public void connect() {
-		if (isNetworkAvailable()) {
-			if (ripple_server_uri.isEmpty())
+		if (isNetworkAvailable()) { // The network is not available.
+			if (ripple_server_uri.isEmpty()) // Ripple server uri is empty.
 				throw new NullPointerException("No ripple_server_uri specified");
 
 			List<BasicNameValuePair> extraHeaders = null;
 			websocket = new WebSocketClient(URI.create(ripple_server_uri),
-					this, extraHeaders);
-			websocket.connect();
+					this, extraHeaders); // Construct a new WebSocketClient.
+			websocket.connect(); // Connect to the Ripple server.
 		}
 	}
 
@@ -119,10 +131,20 @@ public class RippleBank implements WebSocketClient.Listener {
 	public RippleAccount getAccount() {
 		return account;
 	}
+	
+	/**
+	 * Set account.
+	 * @param account The account to set.
+	 */
 	public void setAccount(RippleAccount account) {
 		this.account = account;
 	}
 
+	/**
+	 * Fetch accoun information.
+	 * @param address Account address.
+	 * @throws JSONException
+	 */
 	public void fetchAccountInfo(String address) throws JSONException {
 		Log.v("Wallet","Bank is attempting to fetch "+address);
 		JSONObject json = new JSONObject();
@@ -132,8 +154,11 @@ public class RippleBank implements WebSocketClient.Listener {
 		sendMessage(json);
 	}
 
-
-
+	/**
+	 * Fetch account lines.
+	 * @param address Account address.
+	 * @throws JSONException
+	 */
 	public void fetchAccountLines(String address) throws JSONException {
 		JSONObject json = new JSONObject();
 		json.put("id", ID_ACCOUNT_LINES);
@@ -141,6 +166,11 @@ public class RippleBank implements WebSocketClient.Listener {
 		json.put("account", address);
 		sendMessage(json);
 	}
+	
+	/**
+	 * 
+	 * @throws JSONException
+	 */
 	public void fetchAccountLines() throws JSONException {
 		if (getAccount() == null && getAccount().getAccountAddress().equals("")) {
 			//FIXME: use R.string for errors

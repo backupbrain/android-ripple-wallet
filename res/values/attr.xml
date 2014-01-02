@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <declare-styleable name="View_Account">
         <attr name="accountAddress" format="string" localization="suggested" />
     </declare-styleable>
-    
-    <declare-styleable name="View_CameraPreview">
-    </declare-styleable>
-    
-    <declare-styleable name="View_Notifier">
-    </declare-styleable>
+    <declare-styleable name="View_CameraPreview"></declare-styleable>
+    <declare-styleable name="View_Notifier"></declare-styleable>
 
 </resources>

@@ -25,9 +25,12 @@ import com.phonebank.ripplewallet.View_CameraPreview;
 /**
  * Login Screen
  * @author Tony Gaitatzis
- *
+ * @editor Shiyao Qi
+ * @date 2013.12.22
+ * @email qishiyao2008@126.com
  */
-public class Fragment_Login extends Fragment implements OnClickListener, RippleWalletActivity.BankResponseListener,  View_CameraPreview.ScanListener {
+public class Fragment_Login extends Fragment
+	implements OnClickListener, RippleWalletActivity.BankResponseListener, View_CameraPreview.ScanListener {
 	private View fragmentView;
 	private Button buttonLogin, buttonScanAddress;
 	private TextView editAddress, editSecret;
@@ -146,8 +149,6 @@ public class Fragment_Login extends Fragment implements OnClickListener, RippleW
 	public void onTransactionSubmitted() {
 	}
 
-
-
 	@Override
 	public void handleScan(String message) {
 		String address = message;
@@ -165,5 +166,4 @@ public class Fragment_Login extends Fragment implements OnClickListener, RippleW
 		// TODO Auto-generated method stub
 		
 	}
-
 }
